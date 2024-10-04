@@ -6,26 +6,46 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Please, Enter your profile");
-            Console.WriteLine("First Name: ");
-            String? First_Name = Console.ReadLine();
-            Console.WriteLine("Last Name: ");
-            String? Last_Name = Console.ReadLine();
+            Console.WriteLine("First name: ");
+            String? FirstName = Console.ReadLine();
+            if (String.IsNullOrEmpty(FirstName))
+            {
+                Console.WriteLine("Please, inter your first name correctly and then run the program again.");
+                return;
+            }
+            Console.WriteLine("Last name: ");
+            String? LastName = Console.ReadLine();
+            if (String.IsNullOrEmpty(LastName))
+            {
+                Console.WriteLine("Please, inter your last name correctly and then run the program again.");
+                return;
+            }
             Console.WriteLine("Age: ");
-            String? Age = Console.ReadLine();
-            Console.WriteLine("Mobile Number: ");
-            String? Mobile_Number = Console.ReadLine();
-            if (String.IsNullOrEmpty(First_Name) || String.IsNullOrEmpty(Last_Name) || String.IsNullOrEmpty(Age) || String.IsNullOrEmpty(Mobile_Number))
+            String? AgeSt = Console.ReadLine();
+            if (String.IsNullOrEmpty(AgeSt))
+            {
+                Console.WriteLine("Please, inter your age correctly and then run the program again.");
+                return;
+            }
+            int Age = int.Parse(AgeSt);
+            if (Age < 15 || Age > 120)
             {
                 Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                Console.WriteLine("Please, complete the deficiencies and then run the program again.");
+                Console.WriteLine("Sorry, you are invalid to register.");
+                Console.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+                return;
             }
-            else
+            Console.WriteLine("Mobile number: ");
+            String? MobileNumberSt = Console.ReadLine();
+            int MobileNumberLen = MobileNumberSt.Length;           
+            if (MobileNumberLen != 11)
             {
-                Console.WriteLine("*******************************************************************************************************************************");
-                Console.WriteLine("Thank you, You are Mr./Mrs." + First_Name + " " + Last_Name + ", " + Age + " years old and your mobile number is " + Mobile_Number + ".");
-                Console.WriteLine("*******************************************************************************************************************************");
+                Console.WriteLine("Sorry, your mobile number is invalid. Please, try again.");
+                return;
             }
-
+                Console.WriteLine("**************************************************************************************************************");
+                Console.WriteLine("Thank you, You are Mr./Mrs. " + FirstName + " " + LastName + ", " + Age + " years old and your mobile number is " + MobileNumberSt + ".");
+                Console.WriteLine("**************************************************************************************************************");
         }
     }
 }
