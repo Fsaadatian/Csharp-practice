@@ -10,21 +10,21 @@
             String? FirstName = Console.ReadLine();
             if (String.IsNullOrEmpty(FirstName))
             {
-                Console.WriteLine("Please, inter your first name correctly and then run the program again.");
+                Console.WriteLine("Please, Enter your first name correctly and then run the program again.");
                 return;
             }
             Console.WriteLine("Last name: ");
             String? LastName = Console.ReadLine();
             if (String.IsNullOrEmpty(LastName))
             {
-                Console.WriteLine("Please, inter your last name correctly and then run the program again.");
+                Console.WriteLine("Please, Enter your last name correctly and then run the program again.");
                 return;
             }
             Console.WriteLine("Age: ");
             String? AgeSt = Console.ReadLine();
             if (String.IsNullOrEmpty(AgeSt))
             {
-                Console.WriteLine("Please, inter your age correctly and then run the program again.");
+                Console.WriteLine("Please, Enter your age correctly and then run the program again.");
                 return;
             }
             int Age = int.Parse(AgeSt);
