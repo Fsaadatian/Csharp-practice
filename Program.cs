@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using FsaadatianPractice.Models;
+using System.Reflection.Metadata.Ecma335;
 
 namespace FsaadatianPractice
     // The aim of this program is to receive a user's profile, including first and last name, age and mobile number, and then print them.
@@ -8,7 +9,8 @@ namespace FsaadatianPractice
         
         static void Main(string[] args)
         {
-            string firstName, lastName, ageSt, mobileNumberSt;
+            //string firstName, lastName, ageSt, mobileNumberSt;
+            User user = new User();
             Console.Title = "F. Saadatian Practice";
             Console.WriteLine("Please, enter your profile");
             // ++++++++++++++++++++++++++++++++++++++++++++++++++++ To receipt user first name ++++++++++++++++++++++++++++++++++++++++++++
@@ -16,8 +18,8 @@ namespace FsaadatianPractice
             do
             {
                 Console.WriteLine("First name: ");
-                firstName = Console.ReadLine() ?? "";
-                if (String.IsNullOrEmpty(firstName))
+                user.FirstName = Console.ReadLine() ?? "";
+                if (String.IsNullOrEmpty(user.FirstName))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Please, try again and enter your first name correctly.");
@@ -25,8 +27,8 @@ namespace FsaadatianPractice
                 }
                 else
                 {
-                    char[] arrayfirstName = firstName.ToCharArray();
-                    for (int count = 0; count < firstName.Length; count++)
+                    char[] arrayfirstName = user.FirstName.ToCharArray();
+                    for (int count = 0; count < user.FirstName.Length; count++)
                     {
                         if (char.IsDigit(arrayfirstName[count]))
                         {
@@ -46,8 +48,8 @@ namespace FsaadatianPractice
             do
             {
                 Console.WriteLine("Last name: ");
-                lastName = Console.ReadLine() ?? "";
-                if (String.IsNullOrEmpty(lastName))
+                user.LastName = Console.ReadLine() ?? "";
+                if (String.IsNullOrEmpty(user.LastName))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Please, enter your last name correctly and then try again.");
@@ -55,8 +57,8 @@ namespace FsaadatianPractice
                 }
                 else
                 {
-                    char[] arraylastName = lastName.ToCharArray();
-                    for (int count = 0; count < lastName.Length; count++)
+                    char[] arraylastName = user.LastName.ToCharArray();
+                    for (int count = 0; count < user.LastName.Length; count++)
                     {
                         if (char.IsDigit(arraylastName[count]))
                         {
@@ -75,8 +77,8 @@ namespace FsaadatianPractice
             do
             {
                 Console.WriteLine("Age: ");
-                ageSt = Console.ReadLine() ?? "";
-                if (String.IsNullOrEmpty(ageSt))
+                user.AgeSt = Console.ReadLine() ?? "";
+                if (String.IsNullOrEmpty(user.AgeSt))
                 {
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                     Console.WriteLine("Please, try again and enter your age correctly.");
@@ -86,7 +88,7 @@ namespace FsaadatianPractice
                 {
                     try
                     {
-                        int Age = int.Parse(ageSt);
+                        int Age = int.Parse(user.AgeSt);
                         if (Age < 15 || Age > 120)
                         {
                             Console.ForegroundColor = ConsoleColor.DarkRed;
@@ -109,13 +111,13 @@ namespace FsaadatianPractice
             do
             {
                 Console.WriteLine("Mobile number: ");
-                mobileNumberSt = Console.ReadLine() ?? "";
-                mobileNumberSt = mobileNumberSt.Trim().Replace("+98", "0");
-                if (mobileNumberSt.Length == 11 && mobileNumberSt.StartsWith("0"))
+                user.MobileNumberSt = Console.ReadLine() ?? "";
+                user.MobileNumberSt = user.MobileNumberSt.Trim().Replace("+98", "0");
+                if (user.MobileNumberSt.Length == 11 && user.MobileNumberSt.StartsWith("0"))
                 {
                     try
                     {
-                        long mobileNumberLong = long.Parse(mobileNumberSt);
+                        long mobileNumberLong = long.Parse(user.MobileNumberSt);
                         criterionfourth = true;
                     }
                     catch
@@ -126,12 +128,12 @@ namespace FsaadatianPractice
                     }
 
                 }
-                else if (mobileNumberSt.Length == 10 && !mobileNumberSt.StartsWith("0"))
+                else if (user.MobileNumberSt.Length == 10 && !user.MobileNumberSt.StartsWith("0"))
                 {
-                    mobileNumberSt = $"0{mobileNumberSt}";
+                    user.MobileNumberSt = $"0{user.MobileNumberSt}";
                     try
                     {
-                        long mobileNumberLong = long.Parse(mobileNumberSt);
+                        long mobileNumberLong = long.Parse(user.MobileNumberSt);
                         criterionfourth = true;
                     }
                     catch
@@ -149,15 +151,16 @@ namespace FsaadatianPractice
                 }
             } while (criterionfourth == false);
 
-            Console.Clear();
-            Console.SetCursorPosition(0, 5);
-            Console.ForegroundColor=ConsoleColor.DarkCyan;
-            Console.WriteLine("********************************************************************************************************************");
-            Console.ForegroundColor = ConsoleColor.DarkMagenta;
-            Console.WriteLine($"Thanks, You are Mr./Mrs. {firstName} {lastName}, {ageSt} years old and your mobile number is {mobileNumberSt}.");
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("********************************************************************************************************************");
-            Console.ResetColor();
+            //Console.Clear();
+            //Console.SetCursorPosition(0, 5);
+            //Console.ForegroundColor=ConsoleColor.DarkCyan;
+            //Console.WriteLine("********************************************************************************************************************");
+            //Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            //Console.WriteLine($"Thanks, You are Mr./Mrs. {user.FirstName} {user.LastName}, {user.AgeSt} years old and your mobile number is {user.MobileNumberSt}.");
+            user.ShowDetail();
+            //Console.ForegroundColor = ConsoleColor.DarkCyan;
+            //Console.WriteLine("********************************************************************************************************************");
+            //Console.ResetColor();
         }
     }
 }
